@@ -1,0 +1,22 @@
+{
+  "name": "hathor-jwt-auth",
+  "version": "0.0.1",
+  "description": "Provides JWT auth support to Hathor",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index",
+    "test": "lab"
+  },
+  "author": "Jeremy Darling <jeremy.darling@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.0",
+    "hapi-auth-jwt2": "^7.2.4",
+    "hathor-utils": "0.0.1"
+  },
+  "devDependencies": {
+    "code": "^4.0.0",
+    "lab": "^12.0.0",
+    "nodemon": "^1.11.0"
+  }
+}

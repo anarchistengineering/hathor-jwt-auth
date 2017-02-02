@@ -79,7 +79,7 @@ The callback takes three parameters; error, isValid, and credentials
 
 ```js
 const userHandler = (username, password, callback){
-  myUserProvider.byId(decoded.id, (err, user)=>{
+  myUserProvider.get(username, password, (err, user)=>{
     if(err){
       return callback(err);
     }

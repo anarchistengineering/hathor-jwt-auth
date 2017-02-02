@@ -1,15 +1,15 @@
 Hathor JWT Auth
----
+===
 
 Installation
-===
+---
 
 ```
 npm install --save hathor-jwt-auth
 ```
 
 Configuration
-===
+---
 
 ```js
 auth: {
@@ -46,7 +46,7 @@ auth: {
 ```
 
 Usage
-===
+---
 
 ### Using "validateFunc"
 

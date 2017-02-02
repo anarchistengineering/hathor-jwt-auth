@@ -89,3 +89,19 @@ const userHandler = (username, password, callback){
 ```
 
 Whatever you return in the credentials object will be encoded and sent back in the token.  If you need to change the encoded values later on you should use the validateFunc property to provide the new data.
+
+Authorization
+---
+
+Once your application has a JSON Web Token it can pass this back to the server in either the Authorization header or in the query parameters of each call in the token parameter.
+
+Routes Provided
+---
+
+### POST:/login
+
+Accepts username and password, returns JWT token to be passed back in all subsequent requests to the application either in the Authorization header or in the token query parameter.
+
+### POST|GET:/logout
+
+Clears the token and "logs" the user out.  Unless this case is handled by your application code the token could still be valid.

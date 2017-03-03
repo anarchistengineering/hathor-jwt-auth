@@ -1,6 +1,6 @@
 {
   "name": "hathor-jwt-auth",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Provides JWT auth support to Hathor",
   "main": "index.js",
   "scripts": {

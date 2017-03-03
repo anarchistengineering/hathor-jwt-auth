@@ -191,6 +191,7 @@ module.exports = function(server, options){
       server.auth.strategy('jwt', 'jwt', Object.assign(
         {
           key,
+          urlKey: 'api_key',
           validateFunc,
           verifyOptions: {
             algorithms: config.get('algorithms', [ 'HS256' ]) // pick a strong algorithm

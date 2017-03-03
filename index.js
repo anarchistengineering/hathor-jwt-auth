@@ -1,3 +1,4 @@
+const Joi = require('joi');
 const JWT = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const {
@@ -125,6 +126,25 @@ module.exports = function(server, options){
         {
           method: 'POST',
           path: config.get('loginPath', '/login'),
+          config: {
+            description: 'Validates login credentials',
+            notes: 'Validates login credentials (username and password) contained in the payload and returns JSON encoded JWT Authorization token on success. Attempts to set a cookie header that contains the JWT token for later calls to the backend.',
+            tags: ['api'],
+            validate: {
+              payload: Joi.object().keys({
+                username: Joi.string().required(),
+                password: Joi.string().required()
+              })
+            },
+            response: {
+              schema: Joi.string().description('JWT token'),
+              status: {
+                200: Joi.string().description('JWT token'),
+                400: Joi.string().description('Required fields missing'),
+                401: Joi.string().description('Invalid reason')
+              }
+            }
+          },
           handler(req, reply){
             const {
               username,
@@ -152,6 +172,11 @@ module.exports = function(server, options){
         {
           method: ['GET', 'POST'],
           path: logoutPath || '/logout',
+          config: {
+            tags: ['api'],
+            description: 'Perform logout process',
+            notes: 'Clears JWT Token Cookie and logs user out. Returns a redirect to '+(logoutRedirectTo || '/'),
+          },
           handler(req, reply){
             return reply.redirect(logoutRedirectTo || '/').header('Authorization', '').state('token', '', cookie_options);
           }
